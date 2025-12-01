@@ -26,6 +26,39 @@
             --transition: all 0.3s ease;
         }
 
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+            }
+        }
+
+        .btn-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Reset & Base */
         * {
             margin: 0;
@@ -687,6 +720,87 @@
                 padding: 3rem 1rem;
             }
         }
+
+        /* Parallax Section */
+        .parallax-section {
+            background-image: url('parallax_bg.jpg');
+            min-height: 400px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .parallax-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            /* Overlay for better text contrast */
+        }
+
+        .parallax-section-2 {
+            background-image: url('parallax_bg_2.jpg');
+            min-height: 400px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .parallax-section-2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            /* Overlay for better text contrast */
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 700px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .glass-container h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .glass-container p {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #f1f1f1;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
     </style>
 </head>
 
@@ -717,7 +831,7 @@
         <h1>Brothers Hair Shop</h1>
         <p>A sua barbearia, nosso compromisso.</p>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-            <a href="https://wa.me/5527999999999" target="_blank" class="btn"
+            <a href="https://wa.me/5527999999999" target="_blank" class="btn btn-pulse"
                 style="background-color: #25D366; border-color: #25D366;">Agendar no WhatsApp</a>
             <a href="https://www.google.com/search?q=https://www.instagram.com/brothershairshop%3Figsh%3DMXZxZWJqajRoNG92%26utm_source%3Dqr"
                 target="_blank" class="btn">Siga-nos no Instagram</a>
@@ -728,7 +842,7 @@
     <section id="about">
         <h2>Missão, Visão e História</h2>
         <div class="about-grid">
-            <div class="about-card">
+            <div class="about-card reveal">
                 <h3>História</h3>
                 <p>A Brothers é uma loja que nasceu da necessidade de um empreendedor barbeiro que queria oferecer
                     produtos de qualidade para as barbearias da região. E hoje, com a loja física, a empresa está
@@ -766,7 +880,7 @@
                 <h3>Estilo</h3>
                 <p>Valorizamos a identidade e personalidade de cada cliente.</p>
             </div>
-            <div class="value-card">
+            <div class="value-card reveal">
                 <h3>Inovação</h3>
                 <p>Buscamos sempre novidades e tendências do universo masculino.</p>
             </div>
@@ -785,6 +899,16 @@
         </div>
     </section>
 
+    <!-- Parallax Section -->
+    <section class="parallax-section">
+        <div class="glass-container">
+            <h2>Estilo & Atitude</h2>
+            <p>"O estilo é um reflexo da sua atitude e da sua personalidade. Na Brothers, cuidamos de ambos."</p>
+            <a href="https://wa.me/5527999999999" target="_blank" class="btn"
+                style="background-color: var(--primary-color); color: #fff; border: none;">Agende Seu Horário</a>
+        </div>
+    </section>
+
     <!-- Products & Market -->
     <section id="products">
         <h2>O Que Oferecemos</h2>
@@ -800,7 +924,7 @@
                 para profissionais e consumidores.</p>
         </div>
         <div class="products-container">
-            <div class="product-category">
+            <div class="product-category reveal">
                 <h3>Máquinas e Acessórios</h3>
                 <ul class="product-list">
                     <li>Máquina de cortes</li>
@@ -829,7 +953,7 @@
     <!-- Carousel Section -->
     <section id="gallery" class="carousel-section">
         <h2>Nossa Galeria</h2>
-        <div class="carousel-container">
+        <div class="carousel-container reveal">
             <button class="carousel-btn prev-btn" onclick="prevSlide()">&#10094;</button>
             <div class="carousel-slide" id="carouselSlide">
                 <!-- Images will be injected by JS -->
@@ -842,6 +966,16 @@
         <div style="text-align: center; margin-top: 2rem;">
             <a href="https://wa.me/5527999999999" target="_blank" class="btn"
                 style="background-color: #25D366; border-color: #25D366; color: #fff;">Fale Conosco no WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Parallax Section 2 -->
+    <section class="parallax-section-2">
+        <div class="glass-container">
+            <h2>Experiência Premium</h2>
+            <p>"Qualidade que você sente, estilo que você vê. Relaxe e aproveite o momento."</p>
+            <a href="https://wa.me/5527999999999" target="_blank" class="btn"
+                style="background-color: var(--primary-color); color: #fff; border: none;">Fale Conosco</a>
         </div>
     </section>
 
@@ -890,10 +1024,22 @@
         <button class="modal-nav modal-prev" onclick="changeModalSlide(-1)">&#10094;</button>
         <img class="modal-content" id="modalImg">
         <button class="modal-nav modal-next" onclick="changeModalSlide(1)">&#10095;</button>
-        <a href="https://wa.me/5527999999999" target="_blank" class="modal-btn">Chamar no WhatsApp</a>
+        <a href="https://wa.me/5527999999999" target="_blank" class="btn btn-pulse">Agendar no WhatsApp</a>
     </div>
 
     <script>
+        // Scroll Reveal Observer
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
         // Mobile Menu Toggle
         const hamburger = document.querySelector(".hamburger");
         const navMenu = document.querySelector(".nav-menu");
@@ -1008,32 +1154,7 @@
         }
     </script>
 
-    function prevSlide() {
-    counter--;
-    if (counter < 0) { counter=totalImages - 1; } updateCarousel(); resetTimer(); } let
-        slideInterval=setInterval(nextSlide, 3000); function resetTimer() { clearInterval(slideInterval);
-        slideInterval=setInterval(nextSlide, 3000); } // Modal Logic const modal=document.getElementById("imageModal");
-        const modalImg=document.getElementById("modalImg"); const span=document.getElementsByClassName("close")[0];
-        function openModal(index) { modal.style.display="flex" ; counter=index; // Sync carousel with modal
-        updateModalImage(); clearInterval(slideInterval); // Pause carousel } function updateModalImage() {
-        modalImg.src=`gallery_${counter + 1}.jpg`; } function changeModalSlide(direction) { counter +=direction; if
-        (counter>= totalImages) counter = 0;
-        if (counter < 0) counter=totalImages - 1; updateModalImage(); updateCarousel(); // Sync background carousel too
-            } span.onclick=function () { modal.style.display="none" ; resetTimer(); // Resume carousel }
-            window.onclick=function (event) { if (event.target==modal) { modal.style.display="none" ; resetTimer(); } }
-            function nextSlide() { counter++; if (counter>= totalImages) {
-            counter = 0;
-            }
-            updateCarousel();
-            }
 
-            let slideInterval = setInterval(nextSlide, 3000);
-
-            function resetTimer() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 3000);
-            }
-            </script>
 </body>
 
 </html>
