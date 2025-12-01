@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brothers Hair Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <meta property="og:title" content="Brothers Hair Shop">
+    <meta property="og:description" content="A sua barbearia, nosso compromisso.">
+    <meta property="og:image" content="logo.jpg">
+    <meta property="og:type" content="website">
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #f5f5f5;
+            --primary-color: #FF8C00;
+            /* Laranja Vibrante */
+            --secondary-color: #FFA07A;
+            /* Laranja Claro */
+            --card-bg: #252525;
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        section {
+            padding: 5rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+            font-size: 1.05rem;
+        }
+
+        /* Header */
+        header {
+            background: rgba(26, 26, 26, 0.95);
+            padding: 0.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 28px;
+            height: 3px;
+            margin: 6px auto;
+            transition: var(--transition);
+            background-color: var(--text-color);
+            border-radius: 3px;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1503951914875-452162b7f304?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 0 1rem;
+            margin-top: 0;
+            max-width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            color: #f0f0f0;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 160, 122, 0.4);
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Values */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary-color);
+            background: #2a2a2a;
+        }
+
+        .value-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            border-bottom: 1px solid #444;
+            padding-bottom: 0.5rem;
+        }
+
+        .value-card p {
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        /* Products & Market */
+        .market-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            background: #222;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .product-category {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-category h3 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid #444;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .product-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .product-list li:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        .product-list li::before {
+            content: '✂';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f0f0f;
+            padding: 4rem 1rem 2rem;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .footer-logo {
+            height: 80px;
+            width: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .contact-item strong {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .contact-item span {
+            color: #bbb;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            border: 2px solid #333;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(100%) invert(92%) contrast(83%);
+        }
+
+        /* Dark map style */
+        .social-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--bg-color);
+            background: var(--secondary-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                gap: 0;
+                flex-direction: column;
+                background-color: #1a1a1a;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+                padding: 2rem 0;
+                border-top: 1px solid #333;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 16px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="logo.jpg" alt="Brothers Hair Shop" class="logo-img">
+            </a>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">Sobre</a></li>
+                <li class="nav-item"><a href="#values" class="nav-link">Valores</a></li>
+                <li class="nav-item"><a href="#products" class="nav-link">Produtos</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <h1>Brothers Hair Shop</h1>
+        <p>A sua barbearia, nosso compromisso.</p>
+        <a href="https://www.google.com/search?q=https://www.instagram.com/brothershairshop%3Figsh%3DMXZxZWJqajRoNG92%26utm_source%3Dqr"
+            target="_blank" class="btn">Siga-nos no Instagram</a>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <h2>Missão, Visão e História</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>História</h3>
+                <p>A Brothers é uma loja que nasceu da necessidade de um empreendedor barbeiro que queria oferecer
+                    produtos de qualidade para as barbearias da região. E hoje, com a loja física, a empresa está
+                    realizando o sonho de entregar uma experiência única aos clientes. (Datas: Outubro de 2023, Início
+                    das vendas on-line, Abertura da loja física).</p>
+            </div>
+            <div class="about-card">
+                <h3>Missão</h3>
+                <p>Proporcionar aos nossos clientes uma experiência única em cuidados pessoais, oferecendo produtos
+                    selecionados, atendimento especializado e um ambiente onde cada cliente se sinta valorizado, bem
+                    cuidado e seguro em sua autenticidade.</p>
+            </div>
+            <div class="about-card">
+                <h3>Visão</h3>
+                <p>Ser a referência em cosméticos e produtos para barbearias no Espírito Santo e expandir para todo o
+                    Brasil, se tornar a primeira escolha de quem busca produtos de qualidade, atendimento diferenciado.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section id="values">
+        <h2>Nossos Valores</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>Qualidade</h3>
+                <p>Trabalhamos apenas com produtos e marcas que entregam resultados reais.</p>
+            </div>
+            <div class="value-card">
+                <h3>Confiança</h3>
+                <p>Construímos relações transparentes, com respeito e seriedade.</p>
+            </div>
+            <div class="value-card">
+                <h3>Estilo</h3>
+                <p>Valorizamos a identidade e personalidade de cada cliente.</p>
+            </div>
+            <div class="value-card">
+                <h3>Inovação</h3>
+                <p>Buscamos sempre novidades e tendências do universo masculino.</p>
+            </div>
+            <div class="value-card">
+                <h3>Compromisso</h3>
+                <p>Entregar o melhor, todos os dias.</p>
+            </div>
+            <div class="value-card">
+                <h3>Excelência no atendimento</h3>
+                <p>Atenção, cuidado e profissionalismo em cada etapa.</p>
+            </div>
+            <div class="value-card">
+                <h3>Respeito</h3>
+                <p>Ambiente acolhedor, ético e humano.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products & Market -->
+    <section id="products">
+        <h2>O Que Oferecemos</h2>
+        <div class="market-text">
+            <p>A Brothers Hair Shop atua no mercado de produtos profissionais para cuidados masculinos, com foco
+                principal em atender barbeiros, oferecendo ferramentas, equipamentos e produtos de alta performance que
+                elevam a qualidade do atendimento e dos resultados dentro das barbearias. Além dos profissionais, também
+                atendemos pessoas que desejam cuidar de si mesmas em casa, com produtos de qualidade, durabilidade e
+                resultados profissionais. Nosso objetivo é facilitar o dia a dia de quem busca praticidade, estilo e
+                confiança — seja o barbeiro que trabalha diariamente com excelência, seja o cliente final que valoriza
+                autoestima e autocuidado. A Brothers Hair Shop se destaca por oferecer variedade, marcas confiáveis,
+                suporte e inovação constante, acompanhando tendências do mercado masculino e garantindo sempre o melhor
+                para profissionais e consumidores.</p>
+        </div>
+        <div class="products-container">
+            <div class="product-category">
+                <h3>Máquinas e Acessórios</h3>
+                <ul class="product-list">
+                    <li>Máquina de cortes</li>
+                    <li>Espanador</li>
+                    <li>Borrifador</li>
+                    <li>Tesouras</li>
+                    <li>Pentes</li>
+                    <li>Laminas de maquinas</li>
+                </ul>
+            </div>
+            <div class="product-category">
+                <h3>Cosméticos e Químicos</h3>
+                <ul class="product-list">
+                    <li>Gel</li>
+                    <li>Cera modeladora</li>
+                    <li>Shaving e balm para barbear</li>
+                    <li>Touca para fazer luzes</li>
+                    <li>Pó descolorante</li>
+                    <li>Agua oxigenada</li>
+                    <li>Capa para cortar cabelo</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="contact-info">
+                <img src="logo.jpg" alt="Brothers Hair Shop" class="footer-logo">
+                <h3>Contato e Localização</h3>
+                <div class="contact-item">
+                    <strong>Endereço:</strong>
+                    <span>Avenida Santa Luzia, 616. Mucuri, Cariacica - ES 29148385</span>
+                </div>
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <span>brothersempresas@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <strong>CNPJ/CPF:</strong>
+                    <span>52.041.099/0001-73</span>
+                </div>
+                <div class="contact-item">
+                    <strong>Horário:</strong>
+                    <span>Terça a Sexta: 8h às 18h, Sábado: 8h às 15h</span>
+                </div>
+                <a href="https://www.google.com/search?q=https://www.instagram.com/brothershairshop%3Figsh%3DMXZxZWJqajRoNG92%26utm_source%3Dqr"
+                    target="_blank" class="social-link">Siga-nos no Instagram &rarr;</a>
+            </div>
+            <div class="map-container">
+                <!-- Google Maps Iframe -->
+                <iframe
+                    src="https://maps.google.com/maps?q=Avenida+Santa+Luzia,+616.+Mucuri,+Cariacica+-+ES&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Brothers Hair Shop. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+    </script>
+</body>
+
+</html>
