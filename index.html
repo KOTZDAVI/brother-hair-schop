@@ -8,10 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <link rel="icon" href="images/logo.jpg" type="image/jpeg">
     <meta property="og:title" content="Brothers Hair Shop">
     <meta property="og:description" content="A sua barbearia, nosso compromisso.">
-    <meta property="og:image" content="logo.jpg">
+    <meta property="og:image" content="images/logo.jpg">
     <meta property="og:type" content="website">
     <style>
         /* CSS Variables */
@@ -219,7 +219,7 @@
             align-items: center;
             text-align: center;
             background-color: #1a1a1a;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('hero_bg.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('images/hero_bg.jpg');
             background-size: cover;
             background-position: center;
             padding: 0 1rem;
@@ -480,11 +480,14 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
+            overflow: hidden;
+            /* Prevent scrollbars from pulse */
+            background-color: rgba(0, 0, 0, 0.95);
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            padding: 20px;
+            /* Ensure space for pulse */
         }
 
         .modal-content {
@@ -723,7 +726,7 @@
 
         /* Parallax Section */
         .parallax-section {
-            background-image: url('parallax_bg.jpg');
+            background-image: url('images/parallax_bg.jpg');
             min-height: 400px;
             background-attachment: fixed;
             background-position: center;
@@ -748,7 +751,7 @@
         }
 
         .parallax-section-2 {
-            background-image: url('parallax_bg_2.jpg');
+            background-image: url('images/parallax_bg_2.jpg');
             min-height: 400px;
             background-attachment: fixed;
             background-position: center;
@@ -801,6 +804,116 @@
             margin-bottom: 2rem;
             line-height: 1.6;
         }
+
+        /* Brands Section */
+        .brands-section {
+            background-color: #111;
+            text-align: center;
+            padding-bottom: 4rem;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            margin-top: 3rem;
+            padding: 0 1rem;
+        }
+
+        .brand-item {
+            background: var(--card-bg);
+            height: 120px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            border: 1px solid #333;
+            padding: 10px;
+        }
+
+        .brand-item img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .brand-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.2);
+        }
+
+        .brand-item:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Product Showcase Section */
+        .showcase-section {
+            background-color: #1a1a1a;
+            padding-bottom: 4rem;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .showcase-item {
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: var(--transition);
+            aspect-ratio: 1;
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* Magnifying glass removed as requested */
+
+        .showcase-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .showcase-item:hover::before {
+            opacity: 1;
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .showcase-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+            transition: var(--transition);
+        }
+
+        .showcase-item:hover img {
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -809,7 +922,7 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo">
-                <img src="logo.jpg" alt="Brothers Hair Shop" class="logo-img">
+                <img src="images/logo.jpg" alt="Brothers Hair Shop" class="logo-img">
             </a>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -821,6 +934,7 @@
                 <li class="nav-item"><a href="#about" class="nav-link">Sobre</a></li>
                 <li class="nav-item"><a href="#values" class="nav-link">Valores</a></li>
                 <li class="nav-item"><a href="#products" class="nav-link">Produtos</a></li>
+                <li class="nav-item"><a href="#brands" class="nav-link">Marcas</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contato</a></li>
             </ul>
         </div>
@@ -943,9 +1057,64 @@
                     <li>Shaving e balm para barbear</li>
                     <li>Touca para fazer luzes</li>
                     <li>Pó descolorante</li>
-                    <li>Agua oxigenada</li>
+                    <li>Água oxigenada</li>
                     <li>Capa para cortar cabelo</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Products Showcase -->
+    <section id="showcase" class="showcase-section">
+        <h2>Lançamentos & Destaques</h2>
+        <p style="text-align: center; margin-bottom: 3rem;">Confira nossas novidades em máquinas, lâminas e acessórios.
+        </p>
+        <div class="showcase-grid reveal">
+            <div class="showcase-item" onclick="openShowcase(0)"><img src="novos_produtos/1199764115425901.jpeg"
+                    alt="Novo Produto" loading="lazy"></div>
+            <div class="showcase-item" onclick="openShowcase(1)"><img src="novos_produtos/1207216641335477.jpeg"
+                    alt="Novo Produto" loading="lazy"></div>
+            <div class="showcase-item" onclick="openShowcase(2)"><img src="novos_produtos/1323628216113019.jpeg"
+                    alt="Novo Produto" loading="lazy"></div>
+            <div class="showcase-item" onclick="openShowcase(3)"><img src="novos_produtos/1622342059144107.jpeg"
+                    alt="Novo Produto" loading="lazy"></div>
+            <div class="showcase-item" onclick="openShowcase(4)"><img src="novos_produtos/1797220017629521.jpeg"
+                    alt="Novo Produto" loading="lazy"></div>
+            <div class="showcase-item" onclick="openShowcase(5)"><img src="novos_produtos/1818944335653040.jpeg"
+                    alt="Novo Produto" loading="lazy"></div>
+            <div class="showcase-item" onclick="openShowcase(6)"><img src="novos_produtos/1987487425524638.jpeg"
+                    alt="Novo Produto" loading="lazy"></div>
+            <div class="showcase-item" onclick="openShowcase(7)"><img src="novos_produtos/2387445548378588.jpeg"
+                    alt="Novo Produto" loading="lazy"></div>
+            <div class="showcase-item" onclick="openShowcase(8)"><img src="novos_produtos/737510999369159.jpeg"
+                    alt="Novo Produto" loading="lazy"></div>
+            <div class="showcase-item" onclick="openShowcase(9)"><img src="novos_produtos/842039675100721.jpeg"
+                    alt="Novo Produto" loading="lazy"></div>
+            <div class="showcase-item" onclick="openShowcase(10)"><img src="novos_produtos/853499407326723.jpeg"
+                    alt="Novo Produto" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section id="brands" class="brands-section">
+        <h2>Marcas Parceiras</h2>
+        <p>Trabalhamos com os melhores produtos do mercado para garantir a excelência no seu atendimento.</p>
+        <div class="brands-grid reveal">
+            <!-- Real Images -->
+            <div class="brand-item">
+                <img src="marcas/1170466941935115.jpeg" alt="Marca Parceira">
+            </div>
+            <div class="brand-item">
+                <img src="marcas/1274614278024181.jpeg" alt="Marca Parceira">
+            </div>
+            <div class="brand-item">
+                <img src="marcas/1569725937371231.jpeg" alt="Marca Parceira">
+            </div>
+            <div class="brand-item">
+                <img src="marcas/1812586196061845.jpeg" alt="Marca Parceira">
+            </div>
+            <div class="brand-item">
+                <img src="marcas/2104908273670844.jpeg" alt="Marca Parceira">
             </div>
         </div>
     </section>
@@ -983,7 +1152,7 @@
     <footer id="contact">
         <div class="footer-content">
             <div class="contact-info">
-                <img src="logo.jpg" alt="Brothers Hair Shop" class="footer-logo">
+                <img src="images/logo.jpg" alt="Brothers Hair Shop" class="footer-logo">
                 <h3>Contato e Localização</h3>
                 <div class="contact-item">
                     <strong>Endereço:</strong>
@@ -1057,14 +1226,14 @@
         // Carousel Logic
         const carouselSlide = document.getElementById('carouselSlide');
         const carouselDots = document.getElementById('carouselDots');
-        const totalImages = 16; // Total images from gallery_1.jpg to gallery_16.jpg
+        const totalImages = 16; // Total images from images/gallery_1.jpg to images/gallery_16.jpg
         let counter = 0;
 
         // Initialize Carousel
         for (let i = 1; i <= totalImages; i++) {
             // Create Image
             const img = document.createElement('img');
-            img.src = `gallery_${i}.jpg`;
+            img.src = `images/gallery_${i}.jpg`;
             img.alt = `Galeria Brothers Hair Shop ${i}`;
             img.loading = "lazy";
             img.addEventListener('click', () => openModal(i - 1));
@@ -1122,28 +1291,69 @@
         const modalImg = document.getElementById("modalImg");
         const span = document.getElementsByClassName("close")[0];
 
+        // State to track which gallery is open
+        let currentGalleryMode = 'main'; // 'main' or 'showcase'
+
+        // Define Showcase Images Array
+        const showcaseImages = [
+            "novos_produtos/1199764115425901.jpeg",
+            "novos_produtos/1207216641335477.jpeg",
+            "novos_produtos/1323628216113019.jpeg",
+            "novos_produtos/1622342059144107.jpeg",
+            "novos_produtos/1797220017629521.jpeg",
+            "novos_produtos/1818944335653040.jpeg",
+            "novos_produtos/1987487425524638.jpeg",
+            "novos_produtos/2387445548378588.jpeg",
+            "novos_produtos/737510999369159.jpeg",
+            "novos_produtos/842039675100721.jpeg",
+            "novos_produtos/853499407326723.jpeg"
+        ];
+
+        // Open Main Gallery
         function openModal(index) {
+            currentGalleryMode = 'main';
             modal.style.display = "flex";
-            counter = index; // Sync carousel with modal
+            counter = index;
             updateModalImage();
-            clearInterval(slideInterval); // Pause carousel
+            clearInterval(slideInterval);
+        }
+
+        // Open Showcase Gallery
+        function openShowcase(index) {
+            currentGalleryMode = 'showcase';
+            modal.style.display = "flex";
+            counter = index;
+            updateModalImage();
+            clearInterval(slideInterval);
         }
 
         function updateModalImage() {
-            modalImg.src = `gallery_${counter + 1}.jpg`;
+            if (currentGalleryMode === 'main') {
+                modalImg.src = `images/gallery_${counter + 1}.jpg`;
+            } else {
+                modalImg.src = showcaseImages[counter];
+            }
         }
 
         function changeModalSlide(direction) {
             counter += direction;
-            if (counter >= totalImages) counter = 0;
-            if (counter < 0) counter = totalImages - 1;
+
+            let maxCount = (currentGalleryMode === 'main') ? totalImages : showcaseImages.length;
+
+            if (counter >= maxCount) counter = 0;
+            if (counter < 0) counter = maxCount - 1;
+
             updateModalImage();
-            updateCarousel(); // Sync background carousel too
+
+            // Sync background carousel ONLY if we are in main mode
+            if (currentGalleryMode === 'main') {
+                updateCarousel();
+            }
         }
 
         span.onclick = function () {
             modal.style.display = "none";
-            resetTimer(); // Resume carousel
+            resetTimer();
         }
 
         window.onclick = function (event) {
@@ -1152,6 +1362,20 @@
                 resetTimer();
             }
         }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', function (event) {
+            if (modal.style.display === "flex") {
+                if (event.key === "Escape") {
+                    modal.style.display = "none";
+                    resetTimer();
+                } else if (event.key === "ArrowLeft") {
+                    changeModalSlide(-1);
+                } else if (event.key === "ArrowRight") {
+                    changeModalSlide(1);
+                }
+            }
+        });
     </script>
 
 
